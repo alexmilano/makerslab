@@ -107,7 +107,7 @@ const dCss = `
 const D_STEAM = [
   { L: "S", word: "Science",      desc: "Experimentos · hipótesis · descubrir.",  color: D_PALETTE.lime,   r:-2, glow: D_PALETTE.limeD },
   { L: "T", word: "Technology",   desc: "Scratch · MakeCode · Mario Maker.",      color: D_PALETTE.cyan,   r: 1.5, glow: D_PALETTE.cyan },
-  { L: "E", word: "Engineering",  desc: "WeDo · Spike · Microbit · Arduino.",     color: D_PALETTE.yellow, r:-1, glow: D_PALETTE.yellow },
+  { L: "E", word: "Engineering",  desc: "WeDo · Spike · Microbit.",     color: D_PALETTE.yellow, r:-1, glow: D_PALETTE.yellow },
   { L: "A", word: "Art",          desc: "Diseño visual, narrativa, stop-motion.", color: D_PALETTE.mag,    r: 2, glow: D_PALETTE.mag, dark: true },
   { L: "M", word: "Mathematics",  desc: "Lógica, patrones, algoritmos.",          color: D_PALETTE.orange, r:-1.5, glow: D_PALETTE.orange },
 ];
@@ -125,25 +125,25 @@ const CAMP_PILARES = [
   { n: "01", title: "Robótica + construcción",  desc: "Cada día un proyecto temático distinto. Vehículos, animales, atracciones de feria, naves espaciales… Montar, programar, ver cómo cobra vida.", color: "lime" },
   { n: "02", title: "Ciencia espectacular",      desc: "Volcanes, fluidos no newtonianos, circuitos eléctricos, energía solar, microscopía, reacciones químicas.", color: "yellow" },
   { n: "03", title: "Videojuegos y creación digital",  desc: "Scratch, MakeCode Arcade, Mario Maker, Roblox Studio, micro:bit, pixel art, dibujo con IA.", color: "mag", dark: true },
-  { n: "04", title: "Retos, juegos y merienda", desc: "Kahoots, retos por equipos y un descanso para coger fuerzas. Saludable y divertido.", color: "cyan" },
+  { n: "04", title: "Retos, juegos y descanso", desc: "Kahoots, retos por equipos y un descanso para coger fuerzas. La merienda la trae cada peque de casa.", color: "cyan" },
 ];
 
 const D_PLANS = [
-  { name: "Curso regular", price: 55,  unit: "€/mes", freq: "1 día / semana",  features: ["Clase semanal de 90 min", "Grupos mixtos máx. 8", "Materiales incluidos", "Sin matrícula · sin permanencia", "Cambio de horario flexible"], featured: false, cta: "Reservar clase prueba" },
-  { name: "Campamento verano", price: 150, unit: "€/semana", freq: "L–V · 9:00 – 14:00", features: ["Cada día un reto distinto", "Materiales y merienda incluidos", "Cada semana temática distinta", "Plazas limitadas por aula", "Posibilidad de varias semanas"], featured: true, cta: "Reservar plaza campa" },
+  { name: "Curso regular", price: 55,  unit: "€/mes", freq: "1 día / semana",  features: ["Clase semanal de 75 min", "Grupos mixtos máx. 6", "Materiales incluidos", "Sin matrícula · sin permanencia", "Cambio de horario flexible"], featured: false, cta: "Reservar clase prueba" },
+  { name: "Campamento verano", price: 150, unit: "€/semana", freq: "L–V · 9:00 – 14:00", features: ["Cada día un reto distinto", "Materiales incluidos", "Cada semana temática distinta", "Plazas limitadas por aula", "Posibilidad de varias semanas"], featured: true, cta: "Reservar plaza campa" },
 ];
 
 const D_FAQ = [
   { q: "¿Desde qué edad pueden venir?", a: "A partir de 5 años, aproximadamente. No hay tramos cerrados — los grupos son mixtos y cada peque avanza a su ritmo. Así los más pequeños ven referentes mayores y los mayores explican lo que saben (que es la mejor forma de aprender)." },
   { q: "¿Necesita conocimientos previos?", a: "Ninguno. La clase parte de cero para quien empieza, y propone retos más avanzados para quien ya programa. Lo que sí pedimos es ganas de tocar, romper y volver a montar." },
-  { q: "¿Cómo es una clase regular?", a: "90 minutos, un día por semana, grupos mixtos de máximo 8. Cada peque trae su proyecto activo y la profe va rotando. No hay clase magistral — se aprende haciendo." },
+  { q: "¿Cómo es una clase regular?", a: "75 minutos, un día por semana, grupos mixtos de máximo 6. Cada peque trae su proyecto activo y la profe va rotando. No hay clase magistral — se aprende haciendo." },
   { q: "¿Pueden empezar en cualquier momento del curso?", a: "Sí. Ofrecemos una clase de prueba gratis para que conozcan el aula, los materiales y al grupo. Si encaja, se incorporan a la semana siguiente." },
   { q: "¿Qué incluye la cuota mensual?", a: "Materiales, kits electrónicos, software con licencia educativa y todos los proyectos que se hagan. Sin matrícula. Sin permanencia." },
   { q: "¿Hay descuentos por hermanos?", a: "Sí: 15% sobre el segundo hermano y 20% sobre el tercero. Se aplica automáticamente." },
   { q: "¿De qué va el campamento de verano?", a: "Una semana intensiva (L–V de 9:00 a 14:00). Cada día combinamos robótica + ciencia espectacular + videojuegos + retos por equipos. Cada semana tiene temática distinta, así que se pueden apuntar a varias seguidas sin repetir actividad." },
-  { q: "¿Cuánto cuesta el campamento y qué incluye?", a: "150€ la semana. Incluye todos los materiales, los kits que utilicen y la merienda. Plazas limitadas por aula." },
-  { q: "¿Qué tiene que traer mi peque?", a: "Ganas. Nada más. Materiales, kits, ordenadores y merienda (en el campamento) los ponemos nosotros." },
-  { q: "¿¿Mi peque ya programa… se va a aburrir?", a: "No. Al ser grupos mixtos sin tier rígido, le proponemos retos a su nivel: diseño de videojuegos completos, automatización de dispositivos, electrónica con Arduino. Vienen muchos de fuera con experiencia previa." },
+  { q: "¿Cuánto cuesta el campamento y qué incluye?", a: "150€ la semana. Incluye todos los materiales y los kits que utilicen. Plazas limitadas por aula." },
+  { q: "¿Qué tiene que traer mi peque?", a: "Ganas y su merienda de casa. Los materiales, kits y ordenadores los ponemos nosotros." },
+  { q: "¿¿Mi peque ya programa… se va a aburrir?", a: "No. Al ser grupos mixtos sin tier rígido, le proponemos retos a su nivel: diseño de videojuegos completos, automatización de dispositivos, electrónica y robótica. Vienen muchos de fuera con experiencia previa." },
 ];
 
 // === Mini illustrations ===
@@ -249,7 +249,7 @@ const HeroStats = ({ marginTop = 48 }) => (
   <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, marginTop, border: `2px solid ${D_PALETTE.ink}`, borderRadius: 12, overflow: "hidden", background: D_PALETTE.paper, boxShadow: `5px 5px 0 ${D_PALETTE.ink}` }}>
     {[
       { n: "GRATIS",    l: "clase de prueba",  color: D_PALETTE.mag },
-      { n: "MÁX. 8",   l: "por grupo" },
+      { n: "MÁX. 6",   l: "por grupo" },
       { n: "INCLUIDOS", l: "todos los materiales" },
       { n: "55€/MES",   l: "sin matrícula" },
     ].map((s, i) => (
@@ -314,7 +314,7 @@ const HeroD = ({ mode = "split", displayFamily, time }) => {
             <div className="vd-sticker vd-sticker--mag vd-bounce" style={{ position: "absolute", bottom: 10, right: -10, padding: "14px 20px", "--r": "4deg", maxWidth: 220 }}>
               <div className="vd-mono" style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.85 }}>// gratis</div>
               <div className="vd-display" style={{ fontSize: 22, marginTop: 2 }}>Clase de prueba</div>
-              <div style={{ fontSize: 12, marginTop: 4 }}>sin compromiso · 90 min</div>
+              <div style={{ fontSize: 12, marginTop: 4 }}>sin compromiso · 75 min</div>
             </div>
             <svg style={{ position: "absolute", top: -10, left: -20, width: 240, height: 180, pointerEvents: "none", zIndex: 2 }} viewBox="0 0 240 180">
               <path d="M10 160 Q 80 -10 220 80" fill="none" stroke={D_PALETTE.ink} strokeWidth="2" strokeDasharray="2 8" strokeLinecap="round"/>
@@ -353,7 +353,7 @@ const HeroD = ({ mode = "split", displayFamily, time }) => {
             <div className="vd-sticker vd-sticker--mag" style={{ padding: "20px 24px", transform: "rotate(2deg)" }}>
               <div className="vd-mono" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.85 }}>// gratis</div>
               <div className="vd-display" style={{ fontSize: 30, marginTop: 4 }}>Clase de prueba</div>
-              <div style={{ fontSize: 13, marginTop: 6 }}>sin compromiso · 90 min</div>
+              <div style={{ fontSize: 13, marginTop: 6 }}>sin compromiso · 75 min</div>
             </div>
           </div>
         </div>
@@ -439,7 +439,7 @@ const HeroD = ({ mode = "split", displayFamily, time }) => {
             <div className="vd-sticker vd-sticker--mag" style={{ padding: "18px 20px", transform: "rotate(1deg)" }}>
               <div className="vd-mono" style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.85 }}>// gratis</div>
               <div className="vd-display" style={{ fontSize: 24, marginTop: 4 }}>Clase prueba</div>
-              <div style={{ fontSize: 12, marginTop: 4 }}>90 min · sin compromiso</div>
+              <div style={{ fontSize: 12, marginTop: 4 }}>75 min · sin compromiso</div>
             </div>
             <div className="vd-sticker vd-sticker--yellow" style={{ padding: "16px 18px", transform: "rotate(-0.5deg)" }}>
               <div className="vd-mono" style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.7 }}>★ abierto en 2025</div>
@@ -536,7 +536,7 @@ const VariationD = ({ fontSet = "archivo", heroLayout = "split" }) => {
       {/* === MARQUEE strip === */}
       <div style={{ background: D_PALETTE.ink, color: D_PALETTE.lime, borderTop: `2.5px solid ${D_PALETTE.ink}`, borderBottom: `2.5px solid ${D_PALETTE.ink}` }}>
         <Marquee
-          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE-PRIME", "ARDUINO", "MAKECODE", "MARIO MAKER", "STOP-MOTION", "ELECTRÓNICA", "DISEÑO 3D", "PIXEL ART", "PYTHON"]}
+          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE-PRIME", "MAKECODE", "MARIO MAKER", "STOP-MOTION", "ELECTRÓNICA", "DISEÑO 3D", "PIXEL ART", "PYTHON"]}
           fontFamily="'Archivo Black', sans-serif"
           fontSize={24} fontWeight={900} color={D_PALETTE.lime}
           separator={<span style={{ color: D_PALETTE.mag }}>✦</span>} py={18} speed={45}
@@ -595,10 +595,10 @@ const VariationD = ({ fontSet = "archivo", heroLayout = "split" }) => {
         {/* Las clases — 4 cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
           {[
-            { n: "01", t: "Grupo reducido", d: "Máximo 8 peques por aula. La profe te conoce, conoce tu proyecto y conoce tu ritmo.", color: D_PALETTE.lime, r: -1.5 },
-            { n: "02", t: "1 día / semana", d: "90 minutos de hacer cosas. Eliges el día que mejor te encaje y se puede cambiar cada mes.", color: D_PALETTE.yellow, r: 1 },
-            { n: "03", t: "Aprender haciendo", d: "Nada de clases magistrales. Llegan, eligen reto, construyen, fallan, ajustan, lo enseñan.", color: D_PALETTE.cyan, r: -1 },
-            { n: "04", t: "Materiales pro", d: "Spike Prime, micro:bit, Arduino, MakeCode. Lo mismo que usan ingenieros, a su escala.", color: D_PALETTE.mag, r: 1.5, dark: true },
+            { n: "01", t: "Grupo reducido", d: "Máximo 6 peques por aula. La profe te conoce, conoce tu proyecto y conoce tu ritmo.", color: D_PALETTE.lime, r: -1.5 },
+            { n: "02", t: "1 día / semana", d: "75 minutos de hacer cosas. Eliges el día que mejor te encaje y se puede cambiar cada mes.", color: D_PALETTE.yellow, r: 1 },
+            { n: "03", t: "Aprender haciendo", d: "Nada de clases magistrales. Llegan, cada peque ya tiene su proyecto y lo personaliza, construyen, fallan, ajustan, lo enseñan.", color: D_PALETTE.cyan, r: -1 },
+            { n: "04", t: "Materiales pro", d: "Spike Prime, micro:bit, MakeCode. Materiales de verdad, a su medida.", color: D_PALETTE.mag, r: 1.5, dark: true },
           ].map((card, i) => (
             <div key={i} className="vd-sticker" style={{ background: card.color, color: card.dark ? D_PALETTE.paper : D_PALETTE.ink, padding: "22px 20px", transform: `rotate(${card.r}deg)` }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
@@ -616,7 +616,7 @@ const VariationD = ({ fontSet = "archivo", heroLayout = "split" }) => {
           <div>
             <div className="vd-mono" style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: D_PALETTE.magD, fontWeight: 700 }}>// cuota mensual</div>
             <div className="vd-display" style={{ fontFamily: displayFamily, fontSize: 56, lineHeight: 1, marginTop: 4 }}>55€<span style={{ fontSize: 18, color: D_PALETTE.mute, marginLeft: 6, fontWeight: 600 }}>/mes</span></div>
-            <div style={{ fontSize: 13, color: D_PALETTE.inkSoft, marginTop: 6, fontWeight: 500 }}>1 día por semana · 90 min · sin matrícula</div>
+            <div style={{ fontSize: 13, color: D_PALETTE.inkSoft, marginTop: 6, fontWeight: 500 }}>1 día por semana · 75 min · sin matrícula</div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, borderLeft: `2px dashed ${D_PALETTE.ink}30`, paddingLeft: 28 }}>
             {[
@@ -671,7 +671,7 @@ const VariationD = ({ fontSet = "archivo", heroLayout = "split" }) => {
               <div className="vd-sticker vd-sticker--yellow vd-bounce" style={{ position: "absolute", bottom: -10, left: -20, padding: "14px 18px", "--r": "-6deg", color: D_PALETTE.ink }}>
                 <div className="vd-mono" style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", opacity: 0.75 }}>// horario</div>
                 <div className="vd-display" style={{ fontSize: 22, marginTop: 2 }}>9:00 – 14:00</div>
-                <div style={{ fontSize: 12, marginTop: 4 }}>incluye merienda</div>
+                <div style={{ fontSize: 12, marginTop: 4 }}>merienda de casa</div>
               </div>
               <div className="vd-bounce" style={{ position: "absolute", top: -10, right: -10, "--r": "10deg" }}>
                 <DStarBurst size={110} color={D_PALETTE.mag} rotate={10}>

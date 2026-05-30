@@ -3,8 +3,8 @@
 const MANIFIESTO = [
   { n: "01", title: "Hacer > leer",       desc: "Las manos enseñan más rápido que las diapositivas. Cada sesión termina con algo construido.", color: "lime" },
   { n: "02", title: "Errar = jugar",      desc: "Aquí no se levanta la mano para preguntar 'está bien?'. Se prueba. Si rompe, se entiende mejor.", color: "mag", dark: true },
-  { n: "03", title: "Grupos pequeños",    desc: "Máximo 8 por aula. Cada peque tiene voz, espacio y materiales propios.", color: "yellow" },
-  { n: "04", title: "Material profesional", desc: "Lego Spike, Arduino, Microbit. Lo mismo que usan ingenieros, escalado a su tamaño.", color: "cyan" },
+  { n: "03", title: "Grupos pequeños",    desc: "Máximo 6 por aula. Cada peque tiene voz, espacio y materiales propios.", color: "yellow" },
+  { n: "04", title: "Material profesional", desc: "Lego Spike, Microbit. Herramientas reales, a su medida.", color: "cyan" },
   { n: "05", title: "Cero pantallas pasivas", desc: "Si hay pantalla, está para programar, diseñar o construir. Nunca para consumir.", color: "lime" },
   { n: "06", title: "Familias dentro",    desc: "3 showcases al año. Las familias ven, prueban y juegan con lo que sus peques crean.", color: "yellow" },
 ];
@@ -12,7 +12,7 @@ const MANIFIESTO = [
 const HISTORIA = [
   "En 2025 abrí Makers Lab con una idea muy concreta: el sitio al que yo habría querido ir cuando tenía 8 años y desmontaba el mando de la tele para ver qué había dentro.",
   "Vengo de unos cuantos años en ingeniería de software y de varios más enseñando programación. Y siempre vi lo mismo: extraescolares 'tech' que en realidad eran clases magistrales con un kit. Aquí no.",
-  "En Makers Lab no agrupamos por edad ni hay 'planes' distintos. Una sola cuota mensual, grupos mixtos máximo 8, y cada peque trae un proyecto y avanza con él. Los mayores explican lo que saben, los pequeños ven referentes, y la profe va rotando.",
+  "En Makers Lab no agrupamos por edad ni hay 'planes' distintos. Una sola cuota mensual, grupos mixtos máximo 6, y cada peque trae un proyecto y avanza con él. Los mayores explican lo que saben, los pequeños ven referentes, y la profe va rotando.",
   "Llevamos un curso completo abierto en Rivas. Es poco — pero lo suficiente para saber que esto funciona. Si tu hijo o hija desmonta cosas, hace preguntas raras, o construye torres de Lego más altas que él: bienvenido al sitio correcto.",
 ];
 
@@ -22,7 +22,7 @@ const EQUIPO = [
 
 const NUMEROS = [
   { n: "1º año", l: "en Rivas, abierto en 2025" },
-  { n: "MÁX. 8", l: "peques por grupo" },
+  { n: "MÁX. 6", l: "peques por grupo" },
   { n: "5",      l: "disciplinas STEAM" },
   { n: "GRATIS", l: "clase de prueba" },
   { n: "60 m²",  l: "aula equipada" },

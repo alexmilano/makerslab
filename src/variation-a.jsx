@@ -108,7 +108,7 @@ const A_TESTIMONIALS = [
 ];
 
 const A_PLANS = [
-  { name: "Curioso",  freq: "1 día / semana", price: "59€",  unit: "/mes", features: ["1 disciplina a elegir", "Materiales incluidos", "Grupo reducido (máx. 8)"], featured: false },
+  { name: "Curioso",  freq: "1 día / semana", price: "59€",  unit: "/mes", features: ["1 disciplina a elegir", "Materiales incluidos", "Grupo reducido (máx. 6)"], featured: false },
   { name: "Maker",    freq: "2 días / semana", price: "99€",  unit: "/mes", features: ["2 disciplinas a elegir", "Acceso a proyectos abiertos", "Showcase trimestral", "Materiales incluidos"], featured: true },
   { name: "Lab Pro",  freq: "3 días / semana", price: "139€", unit: "/mes", features: ["Disciplinas combinadas", "Proyecto personal guiado", "Showcase trimestral", "Kit para casa"], featured: false },
 ];
@@ -253,7 +253,7 @@ const VariationA = ({ fontSet = "fraunces", heroLayout = "split" }) => {
       {/* Marquee strip */}
       <div style={{ marginTop: 70, borderTop: `1.5px solid ${A_PALETTE.ink}`, borderBottom: `1.5px solid ${A_PALETTE.ink}`, background: A_PALETTE.lime }}>
         <Marquee
-          items={["Scratch", "WeDo", "Microbit", "Spike Prime", "Arduino", "MakeCode", "Mario Maker", "Stop-motion", "Electrónica", "Diseño 3D"]}
+          items={["Scratch", "WeDo", "Microbit", "Spike Prime", "MakeCode", "Mario Maker", "Stop-motion", "Electrónica", "Diseño 3D"]}
           fontFamily={displayFamily}
           fontSize={28} fontWeight={900} color={A_PALETTE.ink}
           separator="✦" py={18} speed={40}

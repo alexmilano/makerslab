@@ -118,7 +118,7 @@ const C_TESTIMONIALS = [
 ];
 
 const C_PLANS = [
-  { name: "Curioso", price: 59,  freq: "1 día/sem", features: ["1 disciplina", "Materiales incluidos", "Grupo máx. 8"], color: C_PALETTE.paper, featured: false },
+  { name: "Curioso", price: 59,  freq: "1 día/sem", features: ["1 disciplina", "Materiales incluidos", "Grupo máx. 6"], color: C_PALETTE.paper, featured: false },
   { name: "Maker",   price: 99,  freq: "2 días/sem", features: ["2 disciplinas", "Proyectos abiertos", "Showcase trimestral", "Materiales incluidos"], color: C_PALETTE.mag, featured: true },
   { name: "Lab Pro", price: 139, freq: "3 días/sem", features: ["Disciplinas combinadas", "Proyecto personal", "Showcase trimestral", "Kit para casa"], color: C_PALETTE.paper, featured: false },
 ];

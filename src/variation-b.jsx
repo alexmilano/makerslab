@@ -83,15 +83,15 @@ const bCss = `
 const B_STEAM = [
   { L: "S", word: "Science",     subtitle: "Experimentos · hipótesis · evidencia", glow: B_PALETTE.lime, icon: "atom" },
   { L: "T", word: "Technology",  subtitle: "Scratch · MakeCode · Mario Maker",     glow: B_PALETTE.cyan, icon: "chip" },
-  { L: "E", word: "Engineering", subtitle: "WeDo · Spike · Microbit · Arduino",    glow: B_PALETTE.yellow, icon: "gear" },
+  { L: "E", word: "Engineering", subtitle: "WeDo · Spike · Microbit",    glow: B_PALETTE.yellow, icon: "gear" },
   { L: "A", word: "Art",         subtitle: "Diseño visual · pixel · stop-motion",  glow: B_PALETTE.mag, icon: "spark" },
   { L: "M", word: "Mathematics", subtitle: "Lógica · patrones · algoritmos",       glow: "#FF6B1A", icon: "grid" },
 ];
 
 const B_PROGRAMS = [
   { age: "5–6",  code: "MK-100", title: "Mini Makers",       desc: "Lógica con bloques y experimentos sensoriales.",   schedule: "MAR/JUE · 17:00",  duration: "60 min", spots: 3 },
-  { age: "7–8",  code: "CB-200", title: "Code & Build",      desc: "Scratch + WeDo. Primer robot programado.",         schedule: "LUN/MIÉ · 17:00",  duration: "90 min", spots: 5 },
-  { age: "9–11", code: "LX-300", title: "Lab Avanzado",      desc: "Microbit, Spike, game design, electrónica.",       schedule: "LUN/MIÉ · 18:30",  duration: "90 min", spots: 2 },
+  { age: "7–8",  code: "CB-200", title: "Code & Build",      desc: "Scratch + WeDo. Primer robot programado.",         schedule: "LUN/MIÉ · 17:00",  duration: "75 min", spots: 5 },
+  { age: "9–11", code: "LX-300", title: "Lab Avanzado",      desc: "Microbit, Spike, game design, electrónica.",       schedule: "LUN/MIÉ · 18:30",  duration: "75 min", spots: 2 },
   { age: "Verano", code: "SM-X", title: "Campamento STEAM",  desc: "5 días intensivos · 1 reto por día.",              schedule: "JUL · 09:00",      duration: "5h",     spots: 8 },
 ];
 
@@ -102,7 +102,7 @@ const B_TESTIMONIALS = [
 ];
 
 const B_PLANS = [
-  { name: "Curioso",  freq: "1d/sem",  price: 59,  features: ["1 disciplina", "Materiales incluidos", "Grupo máx. 8"], featured: false },
+  { name: "Curioso",  freq: "1d/sem",  price: 59,  features: ["1 disciplina", "Materiales incluidos", "Grupo máx. 6"], featured: false },
   { name: "Maker",    freq: "2d/sem",  price: 99,  features: ["2 disciplinas", "Proyectos abiertos", "Showcase trimestral", "Materiales incluidos"], featured: true },
   { name: "Lab Pro",  freq: "3d/sem",  price: 139, features: ["Disciplinas combinadas", "Proyecto personal", "Showcase trimestral", "Kit para casa"], featured: false },
 ];
@@ -287,7 +287,7 @@ const VariationB = ({ fontSet = "spaceGrotesk", heroLayout = "split" }) => {
       {/* Marquee */}
       <div style={{ borderTop: `1px solid ${B_PALETTE.bg3}`, borderBottom: `1px solid ${B_PALETTE.bg3}`, background: B_PALETTE.bg2 }}>
         <Marquee
-          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE-PRIME", "ARDUINO", "MAKECODE", "MARIO-MAKER", "STOP-MOTION", "ELECTRÓNICA", "DISEÑO-3D", "PIXEL-ART", "PYTHON"]}
+          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE-PRIME", "MAKECODE", "MARIO-MAKER", "STOP-MOTION", "ELECTRÓNICA", "DISEÑO-3D", "PIXEL-ART", "PYTHON"]}
           fontFamily="'JetBrains Mono', monospace"
           fontSize={14} fontWeight={500} color={B_PALETTE.mute}
           separator={<span style={{ color: B_PALETTE.lime }}>▸</span>} py={16} speed={50}

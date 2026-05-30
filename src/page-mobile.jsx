@@ -103,7 +103,7 @@ const PageMobile = ({ fontSet = "archivo" }) => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 0, marginTop: 26, border: `2.5px solid ${C.ink}`, borderRadius: 12, overflow: "hidden", background: C.paper, boxShadow: `5px 5px 0 ${C.ink}` }}>
           {[
             { n: "GRATIS", l: "clase prueba" },
-            { n: "MÁX. 8", l: "por grupo" },
+            { n: "MÁX. 6", l: "por grupo" },
             { n: "55€",    l: "al mes" },
             { n: "INCL.",   l: "materiales" },
           ].map((s, i) => (
@@ -136,7 +136,7 @@ const PageMobile = ({ fontSet = "archivo" }) => {
       {/* === Marquee === */}
       <div style={{ background: C.ink, color: C.lime, borderTop: `2.5px solid ${C.ink}`, borderBottom: `2.5px solid ${C.ink}` }}>
         <Marquee
-          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE", "ARDUINO", "MAKECODE", "MARIO MAKER", "STOP-MOTION", "PIXEL ART"]}
+          items={["SCRATCH", "WEDO", "MICROBIT", "SPIKE", "MAKECODE", "MARIO MAKER", "STOP-MOTION", "PIXEL ART"]}
           fontFamily={displayFamily} fontSize={16} fontWeight={900} color={C.lime}
           separator={<span style={{ color: C.mag }}>✦</span>} py={12} speed={30}
         />
@@ -177,7 +177,7 @@ const PageMobile = ({ fontSet = "archivo" }) => {
           A SU <span style={{ color: C.mag }}>RITMO.</span>
         </h2>
         <p style={{ fontSize: 14, lineHeight: 1.5, marginBottom: 18, color: C.inkSoft, fontWeight: 500 }}>
-          A partir de 5 años. Grupos mixtos máx. 8 peques. 90 min, 1 día por semana. Cada uno avanza con su proyecto.
+          A partir de 5 años. Grupos mixtos máx. 6 peques. 75 min, 1 día por semana. Cada uno avanza con su proyecto.
         </p>
         <div className="mob-sticker" style={{ padding: 18, marginBottom: 14 }}>
           <div className="mob-mono" style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 700, color: C.magD }}>// curso regular</div>
@@ -277,7 +277,7 @@ const PageMobile = ({ fontSet = "archivo" }) => {
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {[
-            { name: "Curioso", price: 59,  freq: "1d/sem",  feat: ["1 disciplina", "Materiales", "Grupo máx. 8"], featured: false },
+            { name: "Curioso", price: 59,  freq: "1d/sem",  feat: ["1 disciplina", "Materiales", "Grupo máx. 6"], featured: false },
             { name: "Maker",   price: 99,  freq: "2d/sem",  feat: ["2 disciplinas", "Showcase trimestral", "Materiales"], featured: true },
             { name: "Lab Pro", price: 139, freq: "3d/sem",  feat: ["Combinadas", "Proyecto personal", "Kit para casa"], featured: false },
           ].map((plan, i) => (
