@@ -1,0 +1,15 @@
+{
+  "name": "makers-lab-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Makers Lab landing — static site served from dist/.",
+  "scripts": {
+    "start": "serve dist --no-clipboard"
+  },
+  "dependencies": {
+    "serve": "14.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

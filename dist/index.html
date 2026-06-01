@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
 
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css?v=20260601b" />
 
 <script type="application/ld+json">
 {
@@ -120,7 +120,7 @@
         </p>
 
         <div class="hero__ctas">
-          <a class="btn" href="#contacto">Reservar clase prueba →</a>
+          <a class="btn" href="https://wa.me/34660101430?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase%20de%20prueba%20gratis%20en%20Makers%20Lab" target="_blank" rel="noopener noreferrer">Reservar clase prueba →</a>
           <a class="btn btn--white" href="#campamento">Ver campamento ⚡</a>
         </div>
 
@@ -145,7 +145,7 @@
       </div>
 
       <!-- Visual block: terminal card + mascot + speech bubble + clase prueba sticker -->
-      <div class="hero__visual" aria-hidden="true">
+      <div class="hero__visual">
         <!-- Dotted trajectory (desktop deco) -->
         <svg class="hero__trail" viewBox="0 0 240 180" preserveAspectRatio="none" focusable="false">
           <path d="M10 160 Q 80 -10 220 80" fill="none" stroke="#0D0D0D" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"/>
@@ -166,9 +166,22 @@
             <span class="terminal__dot" style="background:#C8F23C"></span>
             <span class="terminal__path">~/makers-lab — aula 02 — LIVE</span>
           </header>
-          <div class="terminal__photo">
-            <span class="terminal__photo-label">LAB · NIÑOS PROGRAMANDO</span>
-            <!-- Swap this div for: <img src="assets/lab.webp" alt="Niños programando en el aula" width="640" height="480" loading="lazy"/> -->
+          <div class="terminal__photo" data-slider aria-roledescription="carousel" aria-label="Fotos del aula">
+            <span class="terminal__photo-label">LAB · EN VIVO</span>
+            <div class="slider__track">
+              <img class="slider__slide is-active" src="assets/images/20250615_112757.jpg" alt="Aula Makers Lab" loading="eager" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20250615_112818.jpg" alt="Construyendo robots" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20250615_113827.jpg" alt="Trabajando en equipo" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20250615_122113.jpg" alt="Proyecto STEAM" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20250723_121426.jpg" alt="Programando" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20250808_094315.jpg" alt="Campamento de verano" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20251115_124436.jpg" alt="Robótica" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20251210_171750.jpg" alt="Construcción de proyectos" loading="lazy" decoding="async" width="800" height="600"/>
+              <img class="slider__slide" src="assets/images/20260327_184942.jpg" alt="Aprender haciendo" loading="lazy" decoding="async" width="800" height="600"/>
+            </div>
+            <button class="slider__btn slider__btn--prev" type="button" aria-label="Foto anterior">‹</button>
+            <button class="slider__btn slider__btn--next" type="button" aria-label="Foto siguiente">›</button>
+            <div class="slider__dots" role="tablist" aria-label="Seleccionar foto"></div>
           </div>
           <pre class="terminal__log"><span class="mag">$</span> run --module=robotics --age=9
 <span class="lime-d">→ kit: spike-prime ✓ loaded</span>
@@ -406,6 +419,26 @@
   </div>
 </section>
 
+<!-- ============ GALERÍA ============ -->
+<section class="section gallery" id="galeria" aria-labelledby="gallery-title">
+  <div class="container gallery__head">
+    <span class="label">// el lab en fotos</span>
+    <h2 id="gallery-title" class="display gallery__title">Así es <span class="hl hl--lime">aprender haciendo</span>.</h2>
+    <p class="lead">Momentos reales del aula y del campamento. Construyendo, programando, fallando y volviendo a intentarlo.</p>
+  </div>
+  <ul class="gallery__grid" role="list">
+    <li class="gallery__item"><img src="assets/images/20250615_112757.jpg" alt="Aula Makers Lab" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20250615_112818.jpg" alt="Construyendo robots" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20250615_113827.jpg" alt="Trabajando en equipo" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20250615_122113.jpg" alt="Proyecto STEAM" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20250723_121426.jpg" alt="Programando" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20250808_094315.jpg" alt="Campamento de verano" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20251115_124436.jpg" alt="Robótica" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20251210_171750.jpg" alt="Construcción de proyectos" loading="lazy" decoding="async"/></li>
+    <li class="gallery__item"><img src="assets/images/20260327_184942.jpg" alt="Aprender haciendo" loading="lazy" decoding="async"/></li>
+  </ul>
+</section>
+
 <!-- ============ SAGAN ============ -->
 <section class="section section--dark sagan">
   <div class="container sagan__inner">
@@ -604,7 +637,7 @@
       <h2 class="display cta__title">Ven a<br />probar<br />el <span class="mag">lab.</span></h2>
       <p class="lead">Cuéntanos la edad y los intereses de tu peque y te proponemos un día. <strong>Clase de prueba gratis. Sin compromiso.</strong></p>
 
-      <form class="form" id="contact-form" novalidate>
+      <form class="form" id="contact-form" action="https://formspree.io/f/xaqkgbap" method="POST" novalidate>
         <div class="form__row">
           <label>
             <span>Nombre del peque</span>
@@ -702,9 +735,9 @@
 <!-- Sticky CTA -->
 <div class="sticky-cta" id="sticky-cta" hidden>
   <span>¿Le apuntas? Clase de prueba gratis</span>
-  <a class="btn" href="#contacto">Reservar →</a>
+  <a class="btn" href="https://wa.me/34660101430?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase%20de%20prueba%20gratis%20en%20Makers%20Lab" target="_blank" rel="noopener noreferrer">Reservar →</a>
 </div>
 
-<script src="main.js" defer></script>
+<script src="main.js?v=20260601b" defer></script>
 </body>
 </html>

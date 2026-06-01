@@ -47,11 +47,14 @@
     onScroll();
   }
 
-  // ---------- 3. Contact form ----------
+  // ---------- 3. Contact form (Formspree) ----------
   const form = document.getElementById('contact-form');
   if (form) {
     const status = form.querySelector('.form__status');
-    form.addEventListener('submit', (e) => {
+    const submitBtn = form.querySelector('.form__submit');
+    const endpoint = form.getAttribute('action');
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
       const peque = (data.get('peque') || '').toString().trim();
@@ -59,9 +62,7 @@
       const adulto = (data.get('adulto') || '').toString().trim();
       const tel = (data.get('tel') || '').toString().trim();
       const email = (data.get('email') || '').toString().trim();
-      const intereses = (data.get('intereses') || '').toString().trim();
 
-      // Minimal validation — let the browser do most of the work.
       if (!peque || !edad || !adulto || !tel || !email) {
         status.textContent = '▸ Falta algún campo obligatorio.';
         status.className = 'form__status error';
@@ -70,23 +71,117 @@
         return;
       }
 
-      const subject = encodeURIComponent('Clase de prueba — ' + peque + ' (' + edad + ' años)');
-      const body = encodeURIComponent(
-        'Peque: ' + peque + '\n' +
-        'Edad: ' + edad + '\n' +
-        'Adulto: ' + adulto + '\n' +
-        'Teléfono: ' + tel + '\n' +
-        'Email: ' + email + '\n' +
-        (intereses ? '\nIntereses: ' + intereses : '')
-      );
-      window.location.href = 'mailto:info@makerslab.com?subject=' + subject + '&body=' + body;
+      data.set('_subject', 'Clase de prueba — ' + peque + ' (' + edad + ' años)');
+      data.set('_replyto', email);
 
-      status.textContent = '▸ Abriendo tu app de correo… si no se abre, escríbenos a info@makerslab.com';
-      status.className = 'form__status ok';
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+      status.textContent = '';
+      status.className = 'form__status';
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = '▸ ¡Recibido! Te escribimos en menos de 24h laborables.';
+          status.className = 'form__status ok';
+        } else {
+          const json = await res.json().catch(() => ({}));
+          const msg = json.errors && json.errors[0] && json.errors[0].message ? json.errors[0].message : 'No se pudo enviar. Escríbenos a info@makerslab.com o por WhatsApp.';
+          status.textContent = '▸ ' + msg;
+          status.className = 'form__status error';
+        }
+      } catch (err) {
+        status.textContent = '▸ Sin conexión. Escríbenos a info@makerslab.com o por WhatsApp.';
+        status.className = 'form__status error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
     });
   }
 
-  // ---------- 4. Konami easter egg ----------
+  // ---------- 4. Hero slider ----------
+  const slider = document.querySelector('[data-slider]');
+  if (slider) {
+    const slides = Array.from(slider.querySelectorAll('.slider__slide'));
+    const dotsWrap = slider.querySelector('.slider__dots');
+    const prevBtn = slider.querySelector('.slider__btn--prev');
+    const nextBtn = slider.querySelector('.slider__btn--next');
+    let current = 0;
+    let timer = null;
+    const INTERVAL = 4200;
+
+    if (slides.length > 1 && dotsWrap) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'slider__dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+        if (i === 0) dot.setAttribute('aria-current', 'true');
+        dot.addEventListener('click', () => { go(i); restart(); });
+        dotsWrap.appendChild(dot);
+      });
+    }
+    const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.slider__dot')) : [];
+
+    function go(i) {
+      if (slides.length === 0) return;
+      current = (i + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle('is-active', idx === current));
+      dots.forEach((d, idx) => {
+        if (idx === current) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+    }
+    function next() { go(current + 1); }
+    function prev() { go(current - 1); }
+    function start() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (slides.length < 2) return;
+      stop();
+      timer = setInterval(next, INTERVAL);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restart(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { next(); restart(); });
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+
+    // Touch swipe
+    let touchX = null;
+    slider.addEventListener('touchstart', (e) => {
+      touchX = e.changedTouches[0].screenX;
+      stop();
+    }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      if (touchX == null) return;
+      const dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+      touchX = null;
+      start();
+    }, { passive: true });
+
+    // Pause when off-screen
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.25 });
+      io.observe(slider);
+    } else {
+      start();
+    }
+  }
+
+  // ---------- 5. Konami easter egg ----------
   const seq = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
   let idx = 0;
   document.addEventListener('keydown', (e) => {
