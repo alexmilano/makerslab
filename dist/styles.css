@@ -875,6 +875,22 @@ input, textarea { font: inherit; color: inherit; }
 }
 .testimonial__foot strong { font-size: 14px; display: block; }
 .testimonial__foot .muted { font-size: 10px; }
+.avatar--star {
+  background: #FFD83A;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+}
+.stars {
+  color: #E5A100;
+  letter-spacing: 1px;
+}
+.sticker--mag .stars,
+.sticker--ink .stars { color: #FFD83A; }
+.testimonials__more {
+  margin-top: var(--s-5);
+  text-align: center;
+}
 
 /* ---------- 18. Sagan ---------- */
 .sagan__inner {
