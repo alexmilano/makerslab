@@ -2,11 +2,64 @@
  * Vanilla, no deps. Handles:
  *  - Mobile menu toggle
  *  - Sticky CTA visibility on scroll
- *  - Form submission (mailto fallback)
+ *  - Form submission (Formspree)
+ *  - Hero slider
  *  - Konami easter egg
+ *  - Conversion hooks (data-conversion -> window.gtag / dataLayer if present)
+ *  - UTM survival (capture + propagate to internal links and form fields)
  */
 (function () {
   'use strict';
+
+  // ---------- 0. Google Ads conversion config ----------
+  // Cuenta Makers Lab (9486667750). gtag.js se carga abajo y las conversiones
+  // se disparan vía fireConversion(). Para añadir otra conversión: crea la
+  // acción en Google Ads (Sitio web → "Agregar la etiqueta manualmente") y
+  // añade aquí el evento -> etiqueta (lo que va tras la "/" en send_to).
+  var GOOGLE_ADS_ID = 'AW-17199889301';       // ID de conversión de la cuenta
+  var ADS_CONVERSION_LABELS = {
+    form_submit:    'EW_WCPr_7rgcEJX3xYlA',   // acción "Formulario de contacto"
+    whatsapp_click: 'Bft3CMDMhbkcEJX3xYlA',   // acción "Clic WhatsApp"
+    phone_click:    '1toLCIL1hLkcEJX3xYlA'    // acción "Clic teléfono"
+  };
+  // Activo solo cuando el ID ya no es el placeholder (no contiene "X").
+  var ADS_READY = GOOGLE_ADS_ID.indexOf('X') === -1;
+
+  // ---------- 0.1. Carga de gtag.js (solo si hay ID real) ----------
+  if (ADS_READY) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_ADS_ID);
+    var gs = document.createElement('script');
+    gs.async = true;
+    gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GOOGLE_ADS_ID;
+    document.head.appendChild(gs);
+  }
+
+  // ---------- 0.2. Conversion dispatcher (safe no-op without GA4) ----------
+  function fireConversion(name, params) {
+    if (!name) return;
+    var payload = Object.assign({}, params || {});
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, payload);
+        // Conversión de Google Ads si este evento tiene etiqueta configurada.
+        var label = ADS_CONVERSION_LABELS[name];
+        if (ADS_READY && label && label.indexOf('LABEL') === -1) {
+          window.gtag('event', 'conversion', {
+            send_to: GOOGLE_ADS_ID + '/' + label,
+            value: 1.0,
+            currency: 'EUR'
+          });
+        }
+      }
+      if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(Object.assign({ event: name }, payload));
+      }
+    } catch (_) { /* silent */ }
+  }
+  window.makersLabFireConversion = fireConversion;
 
   // ---------- 1. Mobile menu ----------
   const burger = document.getElementById('burger');
@@ -90,6 +143,14 @@
           form.reset();
           status.textContent = '▸ ¡Recibido! Te escribimos en menos de 24h laborables.';
           status.className = 'form__status ok';
+          fireConversion('form_submit', {
+            landing: document.body.dataset.landing || 'home',
+            form_name: 'clase_prueba'
+          });
+          fireConversion('generate_lead', {
+            landing: document.body.dataset.landing || 'home',
+            form_name: 'clase_prueba'
+          });
         } else {
           const json = await res.json().catch(() => ({}));
           const msg = json.errors && json.errors[0] && json.errors[0].message ? json.errors[0].message : 'No se pudo enviar. Escríbenos a info@makerslab.com o por WhatsApp.';
@@ -180,6 +241,69 @@
       start();
     }
   }
+
+  // ---------- 4.5. Click-based conversion hooks ----------
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-conversion]');
+    if (!el) return;
+    var name = el.getAttribute('data-conversion');
+    fireConversion(name, {
+      landing: el.getAttribute('data-landing') || document.body.dataset.landing || 'home',
+      cta_text: (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80),
+      cta_href: el.getAttribute('href') || ''
+    });
+    if (name === 'whatsapp_click' || name === 'phone_click') {
+      fireConversion('generate_lead', {
+        landing: el.getAttribute('data-landing') || document.body.dataset.landing || 'home',
+        channel: name === 'whatsapp_click' ? 'whatsapp' : 'phone'
+      });
+    }
+  }, true);
+
+  // ---------- 4.6. UTM survival ----------
+  (function utmSurvival() {
+    var KEY = 'mk_utm';
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];
+    var params = new URLSearchParams(window.location.search);
+    var captured = {};
+    KEYS.forEach(function (k) { if (params.has(k)) captured[k] = params.get(k); });
+    try {
+      if (Object.keys(captured).length) {
+        sessionStorage.setItem(KEY, JSON.stringify(captured));
+      }
+    } catch (_) {}
+
+    var stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem(KEY) || '{}') || {}; } catch (_) {}
+    if (!Object.keys(stored).length) return;
+
+    // Append to same-origin internal links (skip anchors, mailto, tel, wa.me, maps)
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (!href || href[0] === '#' || /^(mailto:|tel:|javascript:)/i.test(href)) return;
+      try {
+        var url = new URL(href, window.location.origin);
+        if (url.origin !== window.location.origin) return;
+        Object.keys(stored).forEach(function (k) {
+          if (!url.searchParams.has(k)) url.searchParams.set(k, stored[k]);
+        });
+        a.setAttribute('href', url.pathname + (url.search ? url.search : '') + url.hash);
+      } catch (_) {}
+    });
+
+    // Populate hidden inputs in the contact form
+    var form = document.getElementById('contact-form');
+    if (form) {
+      Object.keys(stored).forEach(function (k) {
+        if (form.querySelector('input[name="' + k + '"]')) return;
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = k;
+        input.value = stored[k];
+        form.appendChild(input);
+      });
+    }
+  })();
 
   // ---------- 5. Konami easter egg ----------
   const seq = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
