@@ -1479,3 +1479,6 @@ input, textarea { font: inherit; color: inherit; }
   body { background: #fff; }
   * { box-shadow: none !important; }
 }
+
+/* Un solo plan (fuera de temporada de campamento) */
+.plans--single { max-width: 560px; margin-inline: auto; }
